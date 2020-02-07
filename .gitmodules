@@ -1,0 +1,3 @@
+[submodule "themes/webcomic"]
+	path = themes/webcomic
+	url = https://github.com/TBPixel/hugo-webcomic-theme
