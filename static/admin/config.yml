@@ -1,6 +1,8 @@
 backend:
   name: git-gateway
   branch: master # Branch to update (optional; defaults to master)
+# when using the default proxy server port
+# local_backend: true
 media_folder: static/img
 public_folder: /img
 collections:
@@ -10,10 +12,26 @@ collections:
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-Note: You won't be able to access the CMS just yet — you still need to depl
+
+  - name: "walden-comic" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Walden Comic" # Used in the UI, ie.: "New Post"
+    folder: "content/walden-comic" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    editor:
+      preview: true
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Image", name: "image", widget: "image", required: true}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
